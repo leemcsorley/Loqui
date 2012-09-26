@@ -7,7 +7,7 @@ var login = e.login = function (req, res) {
     loqui.login(post.username, post.password, function (err, user) {
         if (!err) {
             req.session.username = user.username;
-            res.redirect('/index');
+            res.redirect('/');
         }
         else {
             res.locals.errors = err;
@@ -21,10 +21,10 @@ var register = e.register = function (req, res) {
     if (post.password != post.password2) {
         res.send("passwords don't match");
     }
-    else loqui.register({ username:post.username, password:post.password, email:post.email }, function (err, user) {
+    else loqui.register({ username:post.email, firstName: post.first, lastName: post.last, password:post.password, email:post.email }, function (err, user) {
         if (!err) {
             req.session.username = post.username;
-            res.redirect('/index');
+            res.redirect('/');
         }
         else {
             res.send('register failed' + err);

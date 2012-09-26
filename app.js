@@ -42,7 +42,7 @@ app.configure('production', function () {
 
 function checkAuth(req, res, next) {
     if (!req.session.username) {
-        res.send("You are not authorized to view this page");
+        res.redirect('/login');
     } else {
         next();
     }
@@ -60,6 +60,10 @@ app.get('/register', function (req, res) {
     res.render('account/register', { title:'Register', errors:res.locals.errors });
 });
 app.post('/register', account.register);
+app.get('/compose', checkAuth, function (req, res) {
+    res.render('post/compose');
+})
+app.post('/send', checkAuth, routes.send);
 app.get('/logout', function (req, res) {
     delete req.session.username;
     res.redirect('/login');

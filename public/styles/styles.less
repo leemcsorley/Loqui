@@ -1,5 +1,7 @@
 @import './bootstrap.less';
 
+// GENERAL
+
 .oh {
   overflow: hidden;
 }
@@ -15,3 +17,24 @@
 .space-right {
   margin-right: 9px;
 }
+
+// POST COMPOSE
+@compose-label-width:                 60px;
+@compose-padding: 5px;
+
+.form-compose {
+
+}
+
+.form-compose .control-label {
+  width: @compose-label-width !important;
+}
+
+.form-compose .control-group {
+
+}
+
+.form-compose .controls {
+  margin-left: (@compose-label-width + @compose-padding) !important;
+}
+

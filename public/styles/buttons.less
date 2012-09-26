@@ -2,6 +2,7 @@
 // Buttons
 // --------------------------------------------------
 
+
 // Base styles
 // --------------------------------------------------
 
@@ -23,23 +24,27 @@
   border-bottom-color: darken(@btnBorder, 10%);
   .border-radius(4px);
   .ie7-restore-left-whitespace(); // Give IE7 some love
-  .box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)); // Hover state
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
+
+  // Hover state
   &:hover {
     color: @grayDark;
     text-decoration: none;
     background-color: darken(@white, 10%);
     *background-color: darken(@white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
-    background-position: 0 -15px; // transition is only when going to hover, otherwise the background
-  // behind the gradient (there for IE<=9 fallback) gets mismatched
+    background-position: 0 -15px;
+
+    // transition is only when going to hover, otherwise the background
+    // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(background-position .1s linear);
   }
 
-// Focus state for keyboard and accessibility
+  // Focus state for keyboard and accessibility
   &:focus {
     .tab-focus();
   }
 
-// Active state
+  // Active state
   &.active,
   &:active {
     background-color: darken(@white, 10%);
@@ -49,7 +54,7 @@
     .box-shadow(inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05));
   }
 
-// Disabled state
+  // Disabled state
   &.disabled,
   &[disabled] {
     cursor: default;
@@ -61,6 +66,8 @@
 
 }
 
+
+
 // Button Sizes
 // --------------------------------------------------
 
@@ -71,7 +78,6 @@
   line-height: normal;
   .border-radius(5px);
 }
-
 .btn-large [class^="icon-"] {
   margin-top: 2px;
 }
@@ -82,7 +88,6 @@
   font-size: @baseFontSize - 2px;
   line-height: @baseLineHeight - 2px;
 }
-
 .btn-small [class^="icon-"] {
   margin-top: 0;
 }
@@ -93,6 +98,7 @@
   font-size: @baseFontSize - 3px;
   line-height: @baseLineHeight - 3px;
 }
+
 
 // Block button
 // -------------------------
@@ -119,6 +125,8 @@ input[type="button"] {
   }
 }
 
+
+
 // Alternate buttons
 // --------------------------------------------------
 
@@ -129,56 +137,54 @@ input[type="button"] {
 .btn-success.active,
 .btn-info.active,
 .btn-inverse.active {
-  color: rgba(255, 255, 255, .75);
+  color: rgba(255,255,255,.75);
 }
 
 // Set the backgrounds
 // -------------------------
-.btn { // reset here as of 2.0.3 due to Recess property order
+.btn {
+  // reset here as of 2.0.3 due to Recess property order
   border-color: #c5c5c5;
-  border-color: rgba(0, 0, 0, .15) rgba(0, 0, 0, .15) rgba(0, 0, 0, .25);
+  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
 }
-
 .btn-primary {
   .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
 }
-
 // Warning appears are orange
 .btn-warning {
   .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
 }
-
 // Danger and error appear as red
 .btn-danger {
   .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
 }
-
 // Success appears as green
 .btn-success {
   .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
 }
-
 // Info appears as a neutral blue
 .btn-info {
   .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
 }
-
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
 }
 
+
 // Cross-browser Jank
 // --------------------------------------------------
 
 button.btn,
-input[type="submit"].btn { // Firefox 3.6 only I believe
+input[type="submit"].btn {
+
+  // Firefox 3.6 only I believe
   &::-moz-focus-inner {
     padding: 0;
     border: 0;
   }
 
-// IE7 has some default padding on button controls
+  // IE7 has some default padding on button controls
   *padding-top: 3px;
   *padding-bottom: 3px;
 
@@ -196,6 +202,7 @@ input[type="submit"].btn { // Firefox 3.6 only I believe
   }
 }
 
+
 // Link buttons
 // --------------------------------------------------
 
@@ -207,20 +214,17 @@ input[type="submit"].btn { // Firefox 3.6 only I believe
   background-image: none;
   .box-shadow(none);
 }
-
 .btn-link {
   border-color: transparent;
   cursor: pointer;
   color: @linkColor;
   .border-radius(0);
 }
-
 .btn-link:hover {
   color: @linkColorHover;
   text-decoration: underline;
   background-color: transparent;
 }
-
 .btn-link[disabled]:hover {
   color: @grayDark;
   text-decoration: none;

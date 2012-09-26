@@ -2,6 +2,7 @@
 // Navbars (Redux)
 // --------------------------------------------------
 
+
 // COMMON STYLES
 // -------------
 
@@ -9,7 +10,9 @@
 .navbar {
   overflow: visible;
   margin-bottom: @baseLineHeight;
-  color: @navbarText; // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
+  color: @navbarText;
+
+  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
   *z-index: 2;
 }
@@ -18,12 +21,14 @@
 // Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   min-height: @navbarHeight;
-  padding-left: 20px;
+  padding-left:  20px;
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
   .border-radius(4px);
-  .box-shadow(0 1px 4px rgba(0,0,0,.065)); // Prevent floats from breaking the navbar
+  .box-shadow(0 1px 4px rgba(0,0,0,.065));
+
+  // Prevent floats from breaking the navbar
   .clearfix();
 }
 
@@ -38,11 +43,13 @@
   height: auto;
 }
 
+
 // Brand: website or project name
 // -------------------------
 .navbar .brand {
   float: left;
-  display: block; // Vertically center the text given @navbarHeight
+  display: block;
+  // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
@@ -85,7 +92,6 @@
 .navbar .btn-group {
   .navbarVerticalAlign(30px); // Vertically center in navbar
 }
-
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
 .navbar .input-append .btn {
@@ -139,6 +145,8 @@
   }
 }
 
+
+
 // Static navbar
 // -------------------------
 
@@ -150,6 +158,8 @@
     .border-radius(0);
   }
 }
+
+
 
 // Fixed navbar
 // -------------------------
@@ -163,19 +173,16 @@
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for default navbar
 }
-
 .navbar-fixed-top .navbar-inner,
 .navbar-static-top .navbar-inner {
   border-width: 0 0 1px;
 }
-
 .navbar-fixed-bottom .navbar-inner {
   border-width: 1px 0 0;
 }
-
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
-  padding-left: 0;
+  padding-left:  0;
   padding-right: 0;
   .border-radius(0);
 }
@@ -192,7 +199,6 @@
 .navbar-fixed-top {
   top: 0;
 }
-
 .navbar-fixed-top,
 .navbar-static-top {
   .navbar-inner {
@@ -208,6 +214,8 @@
   }
 }
 
+
+
 // NAVIGATION
 // ----------
 
@@ -218,25 +226,23 @@
   float: left;
   margin: 0 10px 0 0;
 }
-
 .navbar .nav.pull-right {
   float: right; // redeclare due to specificity
   margin-right: 0; // remove margin on float right nav
 }
-
 .navbar .nav > li {
   float: left;
 }
 
 // Links
 .navbar .nav > li > a {
-  float: none; // Vertically center the text given @navbarHeight
+  float: none;
+  // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 }
-
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
 }
@@ -270,7 +276,6 @@
   .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
   .box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075));
 }
-
 .navbar .btn-navbar .icon-bar {
   display: block;
   width: 18px;
@@ -279,10 +284,11 @@
   .border-radius(1px);
   .box-shadow(0 1px 0 rgba(0,0,0,.25));
 }
-
 .btn-navbar .icon-bar + .icon-bar {
   margin-top: 3px;
 }
+
+
 
 // Dropdown menus
 // --------------
@@ -292,8 +298,8 @@
   &:before {
     content: '';
     display: inline-block;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
+    border-left:   7px solid transparent;
+    border-right:  7px solid transparent;
     border-bottom: 7px solid #ccc;
     border-bottom-color: @dropdownBorder;
     position: absolute;
@@ -303,15 +309,14 @@
   &:after {
     content: '';
     display: inline-block;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
+    border-left:   6px solid transparent;
+    border-right:  6px solid transparent;
     border-bottom: 6px solid @dropdownBackground;
     position: absolute;
     top: -6px;
     left: 10px;
   }
 }
-
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .nav > li > .dropdown-menu {
   &:before {
@@ -336,12 +341,10 @@
   background-color: @navbarLinkBackgroundActive;
   color: @navbarLinkColorActive;
 }
-
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
   border-top-color: @navbarLinkColor;
   border-bottom-color: @navbarLinkColor;
 }
-
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
@@ -371,6 +374,7 @@
   }
 }
 
+
 // Inverted navbar
 // -------------------------
 
@@ -385,7 +389,7 @@
   .brand,
   .nav > li > a {
     color: @navbarInverseLinkColor;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
@@ -404,7 +408,7 @@
     background-color: @navbarInverseLinkBackgroundActive;
   }
 
-// Inline text links
+  // Inline text links
   .navbar-link {
     color: @navbarInverseLinkColor;
     &:hover {
@@ -412,13 +416,13 @@
     }
   }
 
-// Dividers in navbar
+  // Dividers in navbar
   .divider-vertical {
     border-left-color: @navbarInverseBackground;
     border-right-color: @navbarInverseBackgroundHighlight;
   }
 
-// Dropdowns
+  // Dropdowns
   .nav li.dropdown.open > .dropdown-toggle,
   .nav li.dropdown.active > .dropdown-toggle,
   .nav li.dropdown.open.active > .dropdown-toggle {
@@ -436,7 +440,7 @@
     border-bottom-color: @navbarInverseLinkColorActive;
   }
 
-// Navbar search
+  // Navbar search
   .navbar-search {
     .search-query {
       color: @white;
@@ -444,7 +448,9 @@
       border-color: @navbarInverseSearchBorder;
       .box-shadow(inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15));
       .transition(none);
-      .placeholder(@navbarInverseSearchPlaceholderColor); // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
+      .placeholder(@navbarInverseSearchPlaceholderColor);
+
+      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
       &.focused {
         padding: 5px 15px;
@@ -458,7 +464,7 @@
     }
   }
 
-// Navbar collapse button
+  // Navbar collapse button
   .btn-navbar {
     .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
   }

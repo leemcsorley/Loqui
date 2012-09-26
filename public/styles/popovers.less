@@ -2,6 +2,7 @@
 // Popovers
 // --------------------------------------------------
 
+
 .popover {
   position: absolute;
   top: 0;
@@ -12,24 +13,18 @@
   padding: 1px;
   background-color: @popoverBackground;
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
   border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, .2);
+  border: 1px solid rgba(0,0,0,.2);
   .border-radius(6px);
-  .box-shadow(0 5px 10px rgba(0,0,0,.2)); // Offset the popover to account for the popover arrow
-  &.top {
-    margin-bottom: 10px;
-  }
-  &.right {
-    margin-left: 10px;
-  }
-  &.bottom {
-    margin-top: 10px;
-  }
-  &.left {
-    margin-right: 10px;
-  }
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+
+  // Offset the popover to account for the popover arrow
+  &.top     { margin-bottom: 10px; }
+  &.right   { margin-left: 10px; }
+  &.bottom  { margin-top: 10px; }
+  &.left    { margin-right: 10px; }
 
 }
 
@@ -61,7 +56,6 @@
   border-color: transparent;
   border-style: solid;
 }
-
 .popover .arrow:after {
   content: "";
   z-index: -1;
