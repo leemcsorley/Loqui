@@ -34,6 +34,22 @@ var smlUser = e.smlUser = function(user) {
     };
 };
 
+// str: the search string
+// callback(err, users) - the array of user objects
+var searchUsers = e.searchUsers = function(str, callback) {
+    var query = sclient.createQuery()
+        .q({content_type: "user",
+            keywords: "*" + str + "*" })
+        .start(0)
+        .rows(10);
+    sclient.search(query, function(err, obj) {
+       if (err)
+            callback(err, null);
+       else
+            callback(null, obj.response.docs.map(function (doc) { return JSON.parse(doc.json); }));
+    });
+};
+
 var getUserByUsername = e.getUserByUsername = function (username, callback) {
     db.view("account", "byUsername", { include_docs:true, key:username }, function (err, body) {
         if (!err) {
@@ -52,7 +68,6 @@ var getUserByUsername = e.getUserByUsername = function (username, callback) {
 // callback(err, post) - the post object saved into the database
 var send = e.send = function (post, callback) {
     post.type = "post";
-
 };
 
 // user: the user object
@@ -85,7 +100,8 @@ var register = e.register = function (user, callback) {
                         sclient.add({
                             id: user._id,
                             content_type: "user",
-                            keywords: user.email + " " + user.firstName + " " + user.lastName
+                            keywords: user.email + " " + user.firstName + " " + user.lastName,
+                            json: JSON.stringify(smlUser(user))
                         }, function(err, obj) {
                             if (err)
                                 console.log(err);

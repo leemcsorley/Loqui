@@ -60,14 +60,16 @@ app.get('/register', function (req, res) {
     res.render('account/register', { title:'Register', errors:res.locals.errors });
 });
 app.post('/register', account.register);
-app.get('/compose', checkAuth, function (req, res) {
-    res.render('post/compose');
-})
-app.post('/send', checkAuth, routes.send);
 app.get('/logout', function (req, res) {
     delete req.session.username;
     res.redirect('/login');
 });
+// post routes
+app.get('/compose', checkAuth, function (req, res) {
+    res.render('post/compose');
+})
+app.post('/send', checkAuth, routes.send);
+app.get('/usersearch', routes.usersearch);
 
 app.listen(3000, function () {
     console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

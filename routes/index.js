@@ -8,6 +8,18 @@ exports.index = function (req, res) {
     res.render('index', { title:'Express' })
 };
 
+exports.usersearch = function (req, res) {
+  loqui.searchUsers(req.query.str, function(err, users) {
+     if (!err) res.send(users.map(function(u) {
+         return { id:u._id,
+                  name:u.firstName + " " + u.lastName,
+                  img:u.profileImgUrl,
+                  caption:u.email }
+     }));
+     else res.send({error: err});
+  });
+};
+
 exports.send = function (req, res){
     req.contentType('json');
     // call back
